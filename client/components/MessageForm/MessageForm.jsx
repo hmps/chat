@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import styles from './MessageForm.css';
+
 const propTypes = {
   onMessageSubmit: React.PropTypes.func.isRequired,
   onTyping: React.PropTypes.func.isRequired,
@@ -52,18 +54,17 @@ class MessageForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className={styles.MessageForm} onSubmit={this.handleSubmit}>
         <input
+          type="text"
           onChange={this.changeHandler}
           onBlur={this.blurHandler}
           value={this.state.text}
-          type="text"
           placeholder="Type your message here"
           />
-        <input type="submit" value="OK" />
+        <button type="submit" className="button">Skicka</button>
       </form>
     );
   }
 }
-
 export default MessageForm;

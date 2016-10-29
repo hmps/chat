@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import styles from './MessageItem.css';
 
@@ -7,12 +8,15 @@ const propTypes = {
 };
 
 function MessageItem(props) {
-  const className = props.message.ownMessage ? styles.ownMessage : styles.otherMessage;
+  const containerClasses = classNames({
+    [styles.Container]: true,
+    [styles.ownMessage]: props.message.ownMessage,
+  });
 
   return (
-    <div className={className}>
-      <span className={styles.userName}>{props.message.user.id}</span>
-      {props.message.text}
+    <div className={containerClasses}>
+      <div className={styles.userName}>{props.message.user.id}</div>
+      <div className={styles.MessageItem}>{props.message.text}</div>
     </div>
   );
 }

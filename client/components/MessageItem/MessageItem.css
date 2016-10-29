@@ -1,12 +1,27 @@
-.ownMessage {
-  text-align: right;
+.Container {
+  display: flex;
+  padding: 1rem;
+  align-items: flex-end;
 }
 
-.otherMessage {
-  text-align: left;
+.MessageItem {
+  background-color: #2084C9;
+  color: #fff;
+  padding: .7rem;
+  border-radius: 8px;
+  
+}
+
+.ownMessage {  
+  flex-direction: row-reverse;
+
+  .MessageItem {
+    background-color: #44D97A;
+  }
 }
 
 .userName {
   font-size: .7rem;
   font-style: italic;
+  padding: .3rem;
 }

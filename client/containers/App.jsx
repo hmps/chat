@@ -1,7 +1,7 @@
 import io from 'socket.io-client';
 import React, { Component } from 'react';
 
-import MessageForm from 'components/MessageForm';
+import MessageForm from 'components/MessageForm/MessageForm';
 import MessageInfo from 'components/MessageInfo/MessageInfo';
 import MessageList from 'components/MessageList/MessageList';
 
