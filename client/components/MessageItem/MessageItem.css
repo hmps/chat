@@ -1,0 +1,12 @@
+.ownMessage {
+  text-align: right;
+}
+
+.otherMessage {
+  text-align: left;
+}
+
+.userName {
+  font-size: .7rem;
+  font-style: italic;
+}

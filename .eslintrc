@@ -3,5 +3,12 @@
   "extends": "airbnb",
   "env": {
     "browser": true
+  },
+  "settings": {
+    "import/resolver": "eslint-import-resolver-webpack",
+    "import/extensions": [
+      ".js",
+      ".jsx"
+    ]
   }
 }

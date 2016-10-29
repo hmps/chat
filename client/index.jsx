@@ -1,9 +1,8 @@
 // import { Provider } from 'react-redux';
-import ReactDOM from 'react-dom';
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import './socket/index';
-
 
 import App from './containers/App';
 

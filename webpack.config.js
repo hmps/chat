@@ -1,6 +1,16 @@
 const webpack = require('webpack');
 const path = require('path');
 
+const postCSSNext = require('postcss-cssnext');
+const postCSSNested = require('postcss-nested');
+const precss = require('precss');
+
+const postCSSPlugins = [
+  postCSSNested,
+  precss(),
+  postCSSNext(),
+];
+
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProd = nodeEnv === 'production';
 
@@ -16,7 +26,7 @@ module.exports = {
     filename: 'bundle.js',
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.html$/,
         loader: 'file',
@@ -25,18 +35,35 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/,
-        loaders: [
-          'style',
-          'css',
-        ],
-      },
-      {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loaders: [
           // 'react-hot',
           'babel-loader',
+        ],
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: true,
+              localIdentName: isProd ? '[hash:base64:10]' : '[local]---[hash:base64:10]',
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            // options: {
+            //   postcss: {
+            //     plugins: postCSSPlugins,
+            //   },
+            // },
+          },
         ],
       },
     ],
@@ -57,6 +84,11 @@ module.exports = {
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false,
+      options: {
+        postcss: {
+          plugins: postCSSPlugins,
+        },
+      },
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {

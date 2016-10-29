@@ -1,0 +1,9 @@
+.Info {
+  font-size: .8rem;
+  color: #999;
+  margin-bottom: 0;
+}
+
+.isHidden {
+  display: none;
+}
